@@ -13,5 +13,6 @@ public class App {
 		logger.info("Welcome To Deck Of Cards Game");
 		DeckOfCards deckCards = new DeckOfCards();
 		deckCards.cardDeck();
+		deckCards.allotCards();
 	}
 }
