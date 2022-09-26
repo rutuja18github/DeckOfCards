@@ -13,6 +13,7 @@ public class DeckOfCards {
 	String[] deck = new String[52];
 	String[][] player = new String[4][13];
 	int index = 0;
+	int count=0;
 
 
 	// initialize deck
@@ -39,25 +40,22 @@ public class DeckOfCards {
 		}
 	}
 	// distribute cards to player's
-		void allotCards() {
-			for (int i = 0; i < 9; i++) {
-				for (int j = 0; j < 4; j++) {
-					player[j][i] = deck[index];
-					logger.info( player[j][i]);
-					index++;
-				}
-			}
-			printPlayersCard();
+		void allotCards(Queue players) {
+			int count = 0;
+	        for (int j = index; j < 52; j++) {
+	            players.enqueue((deck[index++]));
+	            count++;
+	            if (count == 9) {
+	                break;
+	            }
+	        }
 		}
 
 		// print cards of each players
-		public void printPlayersCard() {
-			for (int i = 0; i < 4; i++) {
-				logger.info("Player " + (i + 1) );
-				for (int j = 0; j < 9; j++) {
-					logger.info(player[i][j]);
-				}
+		public void printPlayersCard(Queue players) {
+				logger.info("Player " + (count + 1) );
+					players.getCards();
+					count++;
 				System.out.println("\n");
-			}
 		}
 }
