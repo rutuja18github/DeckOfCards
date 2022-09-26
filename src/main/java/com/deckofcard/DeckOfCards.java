@@ -1,5 +1,7 @@
 package com.deckofcard;
 
+import java.util.Random;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,6 +20,19 @@ public class DeckOfCards {
 				deck[SUITS.length * i + j] = RANKS[i] + " " + SUITS[j];
 				logger.info(deck[SUITS.length * i + j]);
 			}
+		}
+		shuffle();
+	}
+
+	// shuffle deck
+	public void shuffle() {
+		for (int i = 0; i < 52; i++) {
+			Random ran = new Random();
+			int random = ran.nextInt(52);
+			String temp = deck[i];
+			deck[i] = deck[random];
+			deck[random] = temp;
+			logger.info(deck[random]);
 		}
 	}
 
